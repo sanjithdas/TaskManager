@@ -1,0 +1,142 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+ul.menu-right,
+li.nav-item {
+  display: inline-block;
+}
+
+#logo {
+  border-radius: 20px;
+}
+.nav-item {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: teal;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: rgb(185, 180, 180);
+}
+
+.task-create {
+  display: inline-block;
+  width: 100%;
+}
+
+.user-label {
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 2rem;
+}
+.create-task {
+  margin-right: 0px;
+  float: right;
+  padding: 10px;
+}
+
+.taskbtn {
+  display: inline-block;
+}
+
+.custom-control {
+  background-color: grey;
+}
+.left {
+  display: flex;
+}
+input[type="checkbox"] {
+  width: 30px;
+  height: 25px;
+  margin-top: 5px;
+  background-color: teal;
+}
+.contents {
+  width: 100%;
+}
+
+.right-col {
+  margin-right: 0;
+  display: flex;
+  justify-content: center;
+}
+.task-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.item {
+  justify-items: right;
+  margin-right: 10px;
+}
+.item img {
+  margin-top: -10px;
+}
+.right {
+  display: flex;
+  padding: 10px;
+}
+.item-container-1 {
+  border: 1px solid grey;
+  margin-top: 2rem;
+  padding: 25px;
+}
+.item-container-2 {
+  border: 1px solid grey;
+  padding: 25px;
+}
+
+/** footer */
+.footer-panel {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  background-color: rgb(16, 43, 43);
+  bottom: 0;
+  padding: 20px;
+  font-size: 2rem;
+  position: fixed;
+}
+/** Add Task - modal */
+.modal-title {
+  width: 100%;
+  text-align: center;
+}
+.buttons {
+  text-align: center;
+}
+#description,
+#birthdaytime {
+  border: 2px lightblue;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:after {
+  content: " ";
+  background-color: rgb(240, 133, 10);
+  display: inline-block;
+  visibility: visible;
+  color: teal;
+}
+
+input[type="checkbox"]:checked:after {
+  content: "\2714";
+}
+/* .modal-dialog {
+  position: absolute;
+  top: 180px;
+  right: 100px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+} */
