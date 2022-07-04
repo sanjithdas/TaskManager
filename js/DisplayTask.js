@@ -69,13 +69,13 @@ const createTaskHTML = () =>{
 
          <div class="item"><button class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top" title="Delete Task" onclick="task.deleteTask(${task.id})">Delete</button></div>
           
-         <div class="item"><img src="/images/${taskStatusImage}" alt="${taskStatus}" title="${taskStatus}" width="60px"></div>
+         <div class="item"><img src="./images/${taskStatusImage}" alt="${taskStatus}" title="${taskStatus}" width="60px"></div>
          <div class="item font-weight-bold">${dueDate} ${dateFormat}  <div class="font-weight-bold h3"><sub>${taskStatus}</sub></div>  </div>
         
      </div>
      <div class="collapse" id="description-panel-${index}">
        <div class="card" style="width: 18rem;">
-         <img class="card-img-top" src="/images/${taskStatusImage}" alt="Card image cap">
+         <img class="card-img-top" src="./images/${taskStatusImage}" alt="Card image cap">
          <div class="card-body">
            <h5 class="card-title">${task.name}</h5>
            <p class="card-text font-weight-bold">
