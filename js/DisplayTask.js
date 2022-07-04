@@ -15,11 +15,13 @@ const createTaskHTML = () =>{
    
    let strHTML = '';
    // looping all the tasks fetch from the localStorage. 
+   // all the button click event implemented here 
+
    tasks.forEach((task,index)=>{
     
      // task status display
      let taskStatus = "";
-      // task status display
+      // task status image display
      let taskStatusImage = "";
      let taskBgColor = "";
      let dueDate = "Due Date:";
@@ -30,17 +32,22 @@ const createTaskHTML = () =>{
     let taskDueDate = new Date(task.dueDate);
     let dateFormat = `${taskDueDate.getDate()}/${taskDueDate.getMonth() + 1}/${taskDueDate.getFullYear()}`; 
 
+    // alternative color for different dask division (checking even/odd)
+    
      if (index % 2 != 0) taskBgColor ="";
      else
       taskBgColor = "bg-info";
+      // if status == in-progress
     if (task.status==="in-progress"){
       taskStatusImage ="progress.png"
       taskStatus = "In Progress"
-    }
+    } 
+    // if status == review
     else if (task.status==="REVIEW"){
       taskStatusImage ="review.png"
       taskStatus = "Review"
     }
+     // if status == done
     else if (task.status==="DONE"){
       taskStatusImage ="done.png";
       taskStatus = "Done";
@@ -49,11 +56,13 @@ const createTaskHTML = () =>{
       checkStatus = "checked disabled";
       btnEdit = "disabled"
     }
+     // if status == todo
     else if (task.status==="todo"){
       taskStatusImage ="pending.png";
       taskStatus = "To Do"
     }
     
+    // DOM element creat
     strHTML += 
      `
     <div class="row item-container-1 ${taskBgColor}">
@@ -63,7 +72,6 @@ const createTaskHTML = () =>{
      </div>
      <div class="col right">
          <div class="item"><button class="btn btn-info mr-2" data-toggle="collapse" href="#description-panel-${index}" role="button" aria-expanded="false" title="View your task" aria-controls="description-panel-${index}">View</button></div>
-
          
          <div class="item"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target=".edit-task-form" title="Edit your task" data-id="${task.id}" onclick="task.editTask(${task.id})" ${btnEdit}>Edit</button></div>
 
@@ -99,7 +107,6 @@ const createTaskHTML = () =>{
 }
 
 // render metod to render the tasks on the landing page
-
 const render = (strHTML) =>{
   taskList.innerHTML = strHTML;
 }

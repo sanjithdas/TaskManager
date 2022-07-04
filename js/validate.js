@@ -147,7 +147,7 @@ const validateTaskForm =(name,description,assign_to,duedate,status) =>{
     statusFlag = false;
   }
 
-  console.log(nameFlag,descriptionFlag,assigntoFlag);
+ 
   if (!(nameFlag) && !(descriptionFlag) && !(assigntoFlag) && !(duedateFlag) && !(statusFlag)){
     return true;
   }

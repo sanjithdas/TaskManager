@@ -5,14 +5,18 @@ Task Manager class
 Methods:
   1. Create Task - addTask method
   2. Display tasks - getAllTasks
-  3. Get task with status - getTasksWithStatus
+  3. editTask 
+  4. updateTask
+  5. updateTask
+  6. updateStatus
   7. deleteTask
 */
 
 class TaskManager{
   // constructor intialize the current id as 0 , and the tasks array as empty
   constructor(currentId = 0) {
-    this.currentId = currentId;
+    this.currentId = currentId; // initialize first object id as 0
+    // checking if any item in the local storage, fetch that item id and make it as the current Id
     this.tasks = JSON.parse(localStorage.getItem('tasks_data')) || [];
     if (localStorage.getItem('tasks_data')){
       JSON.parse(localStorage.getItem('tasks_data')).forEach(element => {
@@ -28,11 +32,13 @@ addTask(name, description, assignedTo, dueDate, status) {
   let isValidatedSuccessfully = validateTaskForm(name, description, assignedTo, dueDate, status);
     // push into the tasks array if the input is validated successfully.  
      if (isValidatedSuccessfully) { 
+       // checking if any item in the local storage, fetch that item id and make it as the current Id
       if (localStorage.getItem('tasks_data')){
         JSON.parse(localStorage.getItem('tasks_data')).forEach(element => {
           this.currentId = element.id;
         });
       }
+      // increment the current task id by one
       this.currentId++;  // 3
         const taskAdd = {
         id: this.currentId, // 3
@@ -46,9 +52,6 @@ addTask(name, description, assignedTo, dueDate, status) {
       this.tasks.push(taskAdd);
     // storing data to local storage.  
       localStorage.setItem('tasks_data',JSON.stringify(this.tasks));
-    // modal closing using jQuery.
-     // $('#crate-new-task').modal('hide');
-     // automatically reload the browser 
       location.reload();
     }
  }
@@ -62,25 +65,21 @@ addTask(name, description, assignedTo, dueDate, status) {
   return this.tasks;
  }
 
+ // edit task
  editTask(taskId){
+   // get the index of the given task id
     let index = this.tasks.findIndex(task=> task.id === taskId);
-    console.log(index);
+    // getting the task for that id , setting the values into the update form input fields 
     document.getElementById('edit_name').value=this.tasks[index].name;
     document.getElementById('edit_description').value=this.tasks[index].description;
     document.getElementById('edit_assign_to').value=this.tasks[index].assignedTo;
     document.getElementById('edit_duedate').value=this.tasks[index].dueDate;
-   // console.log(document.getElementById('edit_status'));
-   // document.getElementById('edit_status').val(this.tasks[index].status);
-   
-   // this.tasks[index].status = document.getElementById('edit_duedate').value;
- 
-   document.getElementById("index").value=index;
-   console.log(this.tasks);
+    document.getElementById("index").value=index;
+    
  }
-
+ // update task
  updateTask(index,status){
-  //let index = this.tasks.findIndex(task=> task.id === taskId);
-    console.log(index);
+    // update the array element 
     this.tasks[index].name = document.getElementById('edit_name').value;
     this.tasks[index].description = document.getElementById('edit_description').value;
     this.tasks[index].assignedTo = document.getElementById('edit_assign_to').value ;
@@ -96,27 +95,26 @@ addTask(name, description, assignedTo, dueDate, status) {
  deleteTask(taskId){
    // alert the user to confirm deletion
   let isDelete = confirm('Are you sure you want to delete this record?')
-  console.log('delete task',isDelete);
+  // if true means ok
   if (isDelete){
-   let index = this.tasks.findIndex(task=> task.id === taskId) // taskiD= 2
-   console.log(index);
-   // if that task found index will not be -1 , else the index will be -1
+   let index = this.tasks.findIndex(task=> task.id === taskId) 
+    // if that task found index will not be -1 , else the index will be -1
    if (index > -1){
      // remove that element from the array
     this.tasks.splice(index,1);
    }
-   console.log(this.tasks);
    // update local storage
    localStorage.setItem('tasks_data',JSON.stringify(this.tasks));
+   // reload the browser
    location.reload();
   }
  }
-
+// update status when clickin the checkbox.
  updateStatus(taskId){
     let index = this.tasks.findIndex(task=> task.id === taskId)
     this.tasks[index].status = "DONE";
-   localStorage.setItem('tasks_data',JSON.stringify(this.tasks));  
-   location.reload();
+    localStorage.setItem('tasks_data',JSON.stringify(this.tasks));  
+    location.reload();
  }
 
 }
