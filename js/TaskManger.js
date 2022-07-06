@@ -20,11 +20,11 @@ class TaskManager{
     this.tasks = JSON.parse(localStorage.getItem('tasks_data')) || [];
     if (localStorage.getItem('tasks_data')){
       JSON.parse(localStorage.getItem('tasks_data')).forEach(element => {
-        this.currentId = element.id; // 2
+        this.currentId = element.id; 
       });
     }
     
-};
+  }; // constructor
 
 // add the newly created task object into the task array.
 addTask(name, description, assignedTo, dueDate, status) {
@@ -62,8 +62,11 @@ addTask(name, description, assignedTo, dueDate, status) {
  getAllTasks(){
   showCurrentTime();
   createTaskHTML();
+  this.getTasksStatus()
   return this.tasks;
  }
+
+
 
  // edit task
  editTask(taskId){
@@ -117,7 +120,21 @@ addTask(name, description, assignedTo, dueDate, status) {
     location.reload();
  }
 
-}
+ // list task and its status
+
+ getTasksStatus(){
+    let tasksFromLocalStorage;
+    if (localStorage.getItem('tasks_data')){
+      tasksFromLocalStorage = localStorage.getItem('tasks_data') ;
+    }
+    // converting to object from string
+    if (tasksFromLocalStorage){
+      let tasks = JSON.parse(tasksFromLocalStorage);
+      showTaskStatus(tasks);
+    }
+ }
+
+} // class end
 
 const task = new TaskManager();
 

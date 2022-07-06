@@ -2,6 +2,7 @@
 // function to display the task on DOM.
 // parent node
 let taskList = document.getElementById("task_lists") ;
+
 const createTaskHTML = () =>{
   
   // getting from local storage
@@ -68,7 +69,7 @@ const createTaskHTML = () =>{
     <div class="row item-container-1 ${taskBgColor}">
      <div class="col">
        <input type="checkbox" name="id" value="${task.id}" class="bg-info first " ${checkStatus} onclick="task.updateStatus(${task.id})">
-       <span class="task-name">${task.name}</span>
+       <div class="task-name" nowrap>${task.name}</div>
      </div>
      <div class="col right">
          <div class="item"><button class="btn btn-info mr-2" data-toggle="collapse" href="#description-panel-${index}" role="button" aria-expanded="false" title="View your task" aria-controls="description-panel-${index}">View</button></div>
@@ -109,4 +110,101 @@ const createTaskHTML = () =>{
 // render metod to render the tasks on the landing page
 const render = (strHTML) =>{
   taskList.innerHTML = strHTML;
+}
+
+// display task status in the second column
+
+const showTaskStatus =(tasks) =>{
+
+  let elemCompletedTask = document.getElementById("completed_task");
+  let elemPendingTask = document.getElementById("pending_task");
+  let elemReviewTask  = document.getElementById("review_task");
+  let elemProgressTask  = document.getElementById("progress_task");
+
+  let statusCompleted = ""
+  let statusPenidng = ""
+  let statusProgress = ""
+  let statusReview = ""
+  let dueDate = "Due Date:";
+  tasks.forEach((task,index)=>{
+    if (task.status=="DONE"){
+      statusCompleted += `
+      <div class="card mb-1 bg-success" style="width: 18rem;">
+     
+      <div class="card-body">
+        <h3 class="card-title font-weight-bold bg-light">${task.name}</h3>
+        <p class="card-text h-6">
+         Assigned To : ${task.assignedTo} <br>
+         Description : ${task.description}<br>
+        
+         </p>
+      </div>
+    </div>
+    `
+    }
+
+    if (task.status=="todo"){
+      statusPenidng += `
+      <div class="card mb-1 bg-danger" style="width: 18rem;">
+     
+      <div class="card-body">
+        <h3 class="card-title font-weight-bold bg-light">${task.name}</h3>
+        <p class="card-text font-weight-bold">
+         Assigned To : ${task.assignedTo} <br>
+         Description : ${task.description}<br>
+         ${dueDate} : ${showDueDate(task.dueDate)}
+        
+         </p>
+      </div>
+    </div>
+    `
+    }
+
+    if (task.status=="REVIEW"){
+      statusReview += `
+      <div class="card mb-1 bg-warning" style="width: 18rem;">
+     
+      <div class="card-body">
+        <h3 class="card-title bg-light font-weight-bold">${task.name}</h3>
+        <p class="card-text font-weight-bold">
+         Assigned To : ${task.assignedTo} <br>
+         Description : ${task.description}<br>
+         ${dueDate} : ${showDueDate(task.dueDate)}
+         </p>
+      </div>
+    </div>
+    `
+    }
+
+    if (task.status=="in-progress"){
+      statusProgress += `
+      <div class="card mb-1" style="width: 18rem;background-color:#17a2b8">
+     
+      <div class="card-body">
+        <h3 class="card-title bg-light font-weight-bold">${task.name}</h3>
+        <p class="card-text font-weight-bold">
+         Assigned To : ${task.assignedTo} <br>
+         Description : ${task.description}<br>
+         ${dueDate} : ${showDueDate(task.dueDate)}
+        </p>
+      </div>
+    </div>
+    `
+    }
+
+
+
+  })
+
+  elemCompletedTask.innerHTML = statusCompleted;
+  elemPendingTask.innerHTML = statusPenidng;
+  elemReviewTask.innerHTML = statusReview;
+  elemProgressTask.innerHTML = statusProgress;
+  
+}
+
+const showDueDate = (taskDate) =>{
+  let taskDueDate = new Date(taskDate);
+  let dateFormat = `${taskDueDate.getDate()}/${taskDueDate.getMonth() + 1}/${taskDueDate.getFullYear()}`; 
+  return dateFormat
 }

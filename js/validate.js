@@ -110,6 +110,7 @@ const validateTaskForm =(name,description,assign_to,duedate,status) =>{
     assigntoFlag = false;
   }
   // if duedate is empty
+  
   if (duedate===""){
     errDueDate.innerHTML = "Please enter a date greater than or equal to the current date.";
     errDueDate.style.display="block";
@@ -273,8 +274,9 @@ const validateMe = (fieldName, fieldValue) =>{
       errAssignTo.style.display="none";
       assigntoFlag = false;
     }
-    if (fieldName==="duedate"){
-      if (duedate===""){
+    
+    if (fieldName=="duedate"){
+        if (fieldValue===""){
         errDueDate.innerHTML = "Please enter a date greater than or equal to the current date.";
         errDueDate.style.display="block";
         errDueDate.style.fontSize="20px";

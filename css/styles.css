@@ -30,9 +30,14 @@ li.nav-item {
   display: inline-block;
   width: 100%;
 }
-
-#panel {
+.col {
+  display: inline-block;
+}
+#tasks_panel {
   display: flex;
+}
+#task_lists {
+  width: 60%;
 }
 .user-label {
   display: inline-block;
@@ -51,6 +56,10 @@ li.nav-item {
 
 .custom-control {
   background-color: grey;
+}
+
+.container-main {
+  margin-left: 5rem;
 }
 .left {
   display: flex;
@@ -71,8 +80,15 @@ input[type="checkbox"] {
   justify-content: center;
 }
 .task-name {
+  display: inline-block;
+}
+.task-name {
   font-size: 1.3rem;
   font-weight: bold;
+}
+
+.todo_status {
+  text-align: center;
 }
 .item {
   justify-items: right;
@@ -95,6 +111,25 @@ input[type="checkbox"] {
   padding: 25px;
 }
 
+.right-container {
+  border: 1px solid grey;
+  margin-top: 2rem;
+  padding: 25px;
+  width: 100%;
+}
+
+.status {
+  display: flex;
+  margin-left: 2rem;
+}
+.task_status {
+  width: 5rem;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
 /** footer */
 .footer-panel {
   width: 100%;
@@ -115,7 +150,7 @@ input[type="checkbox"] {
   text-align: center;
 }
 #description,
-#birthdaytime {
+#duedate {
   border: 2px lightblue;
 }
 input[type="checkbox"] {
