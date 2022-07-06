@@ -126,14 +126,18 @@ const showTaskStatus =(tasks) =>{
   let statusProgress = ""
   let statusReview = ""
   let dueDate = "Due Date:";
+
+  
+
   // iterating through the task array to check the status
+
   tasks.forEach((task,index)=>{
     if (task.status=="DONE"){
       statusCompleted += `
       <div class="card mb-1 bg-success" style="width: 18rem;">
      
       <div class="card-body">
-        <h3 class="card-title font-weight-bold bg-light">${task.name}</h3>
+        <h3 class="card-title font-weight-bold bg-light rounded">${task.name}</h3>
         <p class="card-text h-6">
          Assigned To : ${task.assignedTo} <br>
          Description : ${task.description}<br>
@@ -143,13 +147,13 @@ const showTaskStatus =(tasks) =>{
     </div>
     `
     }
-
+        
     if (task.status=="todo"){
       statusPenidng += `
       <div class="card mb-1  bg-danger" style="width: 18rem;">
      
       <div class="card-body">
-        <h3 class="card-title font-weight-bold bg-light">${task.name}</h3>
+        <h3 class="card-title font-weight-bold bg-light rounded">${task.name}</h3>
         <p class="card-text font-weight-bold">
          Assigned To : ${task.assignedTo} <br>
          Description : ${task.description}<br>
@@ -166,7 +170,7 @@ const showTaskStatus =(tasks) =>{
       <div class="card mb-1 ml-0 bg-warning" style="width: 18rem;">
      
       <div class="card-body">
-        <h3 class="card-title bg-light font-weight-bold">${task.name}</h3>
+        <h3 class="card-title bg-light font-weight-bold rounded">${task.name}</h3>
         <p class="card-text font-weight-bold">
          Assigned To : ${task.assignedTo} <br>
          Description : ${task.description}<br>
@@ -182,7 +186,7 @@ const showTaskStatus =(tasks) =>{
       <div class="card mb-1" style="width: 18rem;background-color:#17a2b8">
      
       <div class="card-body">
-        <h3 class="card-title bg-light font-weight-bold">${task.name}</h3>
+        <h3 class="card-title bg-light font-weight-bold rounded">${task.name}</h3>
         <p class="card-text font-weight-bold">
          Assigned To : ${task.assignedTo} <br>
          Description : ${task.description}<br>
@@ -196,11 +200,24 @@ const showTaskStatus =(tasks) =>{
 
 
   })
-
+ 
   elemCompletedTask.innerHTML = statusCompleted;
   elemPendingTask.innerHTML = statusPenidng;
   elemReviewTask.innerHTML = statusReview;
   elemProgressTask.innerHTML = statusProgress;
+
+  if (!statusProgress){
+    elemProgressTask.innerHTML = `<div style="background-color:#17a2b8; width:300px">No task found</div>`;
+  }
+  if (!statusPenidng){
+    elemPendingTask.innerHTML = `<div class="bg-danger" style="width:300px">No task found</div>`;
+  }
+  if (!statusReview){
+    elemReviewTask.innerHTML = `<div class="bg-warning" style="width:300px">No task found</div>`;
+  }
+  if (!statusCompleted){
+    elemCompletedTask.innerHTML = `<div class="bg-success" style="width:300px">No task found</div>`;
+  }
   
 }
 
