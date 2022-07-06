@@ -182,8 +182,6 @@ const resetErrorMessages = () =>{
 }
 
 // individual field validation on lost focus
-
-console.log(formCreateTask);
 //formCreateTask.onpointerover = validateTaskForm
 
 const validateMe = (fieldName, fieldValue) =>{

@@ -126,6 +126,7 @@ const showTaskStatus =(tasks) =>{
   let statusProgress = ""
   let statusReview = ""
   let dueDate = "Due Date:";
+  // iterating through the task array to check the status
   tasks.forEach((task,index)=>{
     if (task.status=="DONE"){
       statusCompleted += `
@@ -145,7 +146,7 @@ const showTaskStatus =(tasks) =>{
 
     if (task.status=="todo"){
       statusPenidng += `
-      <div class="card mb-1 bg-danger" style="width: 18rem;">
+      <div class="card mb-1  bg-danger" style="width: 18rem;">
      
       <div class="card-body">
         <h3 class="card-title font-weight-bold bg-light">${task.name}</h3>
@@ -162,7 +163,7 @@ const showTaskStatus =(tasks) =>{
 
     if (task.status=="REVIEW"){
       statusReview += `
-      <div class="card mb-1 bg-warning" style="width: 18rem;">
+      <div class="card mb-1 ml-0 bg-warning" style="width: 18rem;">
      
       <div class="card-body">
         <h3 class="card-title bg-light font-weight-bold">${task.name}</h3>
@@ -203,6 +204,8 @@ const showTaskStatus =(tasks) =>{
   
 }
 
+
+// convert to human readable format..
 const showDueDate = (taskDate) =>{
   let taskDueDate = new Date(taskDate);
   let dateFormat = `${taskDueDate.getDate()}/${taskDueDate.getMonth() + 1}/${taskDueDate.getFullYear()}`; 

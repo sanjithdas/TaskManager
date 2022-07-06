@@ -1,9 +1,14 @@
+/** body styles  */
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 * {
   box-sizing: border-box;
 }
+
+/** navigation bar  */
+
 ul.menu-right,
 li.nav-item {
   display: inline-block;
@@ -25,6 +30,8 @@ li.nav-item {
 .nav-link:hover {
   background-color: rgb(185, 180, 180);
 }
+
+/** task box section */
 
 .task-create {
   display: inline-block;
@@ -120,7 +127,7 @@ input[type="checkbox"] {
 
 .status {
   display: flex;
-  margin-left: 2rem;
+  margin-left: 0.5rem;
 }
 .task_status {
   width: 5rem;
