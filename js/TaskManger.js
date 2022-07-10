@@ -24,7 +24,7 @@ class TaskManager{
         this.currentId = element.id; 
       });
     }
-    
+    this.sortedArray = [];
   }; // constructor
 
 // add the newly created task object into the task array.
@@ -133,6 +133,10 @@ addTask(name, description, assignedTo, dueDate, status) {
       let tasks = JSON.parse(tasksFromLocalStorage);
       showTaskStatus(tasks);
     }
+ }
+// Sorting task based on the task due date.
+ sortTask(){
+   sortTasks(this.tasks);
  }
 
 } // class end

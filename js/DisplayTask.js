@@ -2,7 +2,7 @@
 // function to display the task on DOM.
 // parent node
 let taskList = document.getElementById("task_lists") ;
-
+let btnSort = document.getElementById("btn_start")
 const createTaskHTML = () =>{
   
   // getting from local storage
@@ -228,3 +228,29 @@ const showDueDate = (taskDate) =>{
   let dateFormat = `${taskDueDate.getDate()}/${taskDueDate.getMonth() + 1}/${taskDueDate.getFullYear()}`; 
   return dateFormat
 }
+
+// sort button listener
+btnSort.addEventListener('click',()=>{
+  task.sortTask();
+  
+})
+
+function sortByDate(a, b) {
+  if (a.dueDate > b.dueDate) {
+      return 1;
+  }
+  if (a.dueDate < b.dueDate) {
+      return -1;
+  }
+  return 0;
+}
+
+ // sort task based on due date.
+function sortTasks(sortedArray)
+{
+  let arrSort =  sortedArray.sort(sortByDate);
+  localStorage.setItem('tasks_data',JSON.stringify(arrSort));
+  location.reload();
+}
+
+
