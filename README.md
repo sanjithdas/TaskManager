@@ -11,6 +11,7 @@ Methods:
   4. updateTask - update the UI
   5. updateStatus - update the status and update the UI
   7. deleteTask - delete the task based on the ID
+  8. sort task based on due date
   
   validate.js - all the user input validations using javascript
   DisplayTask - rendering the task on the DOM
