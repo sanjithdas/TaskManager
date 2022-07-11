@@ -72,6 +72,12 @@ addTask(name, description, assignedTo, dueDate, status) {
  // edit task
  editTask(taskId){
    // get the index of the given task id
+  let tasksFromLocalStorage;
+    if (localStorage.getItem('tasks_data')){
+      tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks_data')) ;
+    }
+
+   this.tasks = tasksFromLocalStorage;
     let index = this.tasks.findIndex(task=> task.id === taskId);
     // getting the task for that id , setting the values into the update form input fields 
     document.getElementById('edit_name').value=this.tasks[index].name;
