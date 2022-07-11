@@ -231,7 +231,7 @@ const showDueDate = (taskDate) =>{
 
 // sort button listener
 btnSort.addEventListener('click',()=>{
-  task.sortTask();
+ // task.sortTask();
   
 })
 
