@@ -7,9 +7,8 @@ Methods:
   2. Display tasks - getAllTasks
   3. editTask 
   4. updateTask
-  5. updateTask
-  6. updateStatus
-  7. deleteTask
+  5. updateStatus
+  6. deleteTask
 */
 
 // class start here
