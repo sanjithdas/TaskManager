@@ -68,7 +68,7 @@ const createTaskHTML = () =>{
      `
     <div class="row item-container-1 ${taskBgColor}">
      <div class="col">
-       <input type="checkbox" name="id" value="${task.id}" class="bg-info first " ${checkStatus} onclick="task.updateStatus(${task.id})" title="Please check the checkbox to make this job done">
+       <input type="checkbox" name="id" value="${task.id}" class="bg-info first " ${checkStatus} onclick="task.updateStatus(${task.id})" title="Please check this checkbox to make this job done">
        <div class="task-name" nowrap>${task.name}</div>
      </div>
      <div class="col right">
